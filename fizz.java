@@ -4,35 +4,37 @@ import java.io.*;
 
 public class fizz {
 
+	static int limit;
+
 	public static void main(String[] args) {
-		fizzBuzz(10);
-	}
+		
+		Scanner input = new Scanner(new InputStreamReader(System.in));
+		
+		
+		while (true) {
+			try {
+				System.out.print("Please enter a non-zero integer: ");
+				limit = Integer.parseInt(input.nextLine());
+				if (limit > 0) break;
+			}
+			catch(NumberFormatException exception) {
+				System.out.println("This Is Not A Non-Zero Integer");
+			}
+		}
 
-
-
-	public static void fizzBuzz(int num) {
-		if (num > 0) {
-			if (num%3 == 0) {
-				System.out.println("Fizz");
-				if (num%5 == 0) {
-					System.out.println("-Buzz");
+		for (int i=1; i<=limit; i++) {
+			if (i%3==0) {
+				if (i%5==0) {
+					System.out.println("Fizz-Buzz");
 				}
 				else {
-					fizzBuzz(num-1);
-				}			  
-				fizzBuzz(num-1);
+					System.out.println("Fizz");
+				} 
 			}
-			else if (num%5 == 0) {
+			else if (i%5==0) {
 				System.out.println("Buzz");
-				fizzBuzz(num-1);
 			}
-			else {
-				System.out.println(Integer.toString(num));
-				fizzBuzz(num-1);
-			}
+			else { System.out.println(Integer.toString(i)); }
 		}
-		else {
-			break;
-		}
-	} 
+	}
 }
